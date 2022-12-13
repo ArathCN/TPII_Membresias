@@ -96,9 +96,8 @@
 }
 
 .container-resumen .row .col .infoBox .cantidad{
-  text-align: right;
-  justify-content: right;
-  align-items: right;
+  position: absolute;
+  left:480px;
 }
 
 #nombre{
