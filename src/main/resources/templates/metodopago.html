@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Método de pago</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
 <header>
@@ -27,7 +27,7 @@
                 <h3 class="title">Resumen de pago</h3>
                 <div class="infoBox">
                     <span><b>Precio de la membresía</b></span>
-                    <span class="cantidad"><b>$0.00</b></span><!-- Aqui va el precio de la membresía-->
+                    <span class="cantidad" th:text="${membresia.precio}"><b>$0.00</b></span><!-- Aqui va el precio de la membresía-->
                 </div>
                 <div class="infoBox">
                     <span><b>Descuento de membresía*</b></span>
@@ -36,14 +36,14 @@
                 <hr class="linea">
                 <div class="infoBox">
                     <span><b>Total a pagar</b></span>
-                    <span class="cantidad"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
+                    <span class="cantidad" th:text="${membresia.precio}"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
                 </div>
             </div>
             <p>*Descuento por el paquete seleccionado en el paso anterior.</p>
         </div>
     </div>
     <div class="container-metodo">
-        <form action="">
+        <form th:action="@{/pago}" method="POST">
             <div class="row">
                 <div class="col">
                     <h3 class="title">Método de pago</h3>

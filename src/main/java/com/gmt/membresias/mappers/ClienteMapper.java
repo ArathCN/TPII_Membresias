@@ -3,6 +3,7 @@ package com.gmt.membresias.mappers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Date;
 
 import org.springframework.jdbc.core.RowMapper;
 
@@ -19,18 +20,21 @@ public class ClienteMapper implements RowMapper<Cliente>{
         Membresia membresia = new Membresia();
         Cliente cliente = null;
         membresia.setId(rs.getLong("idMembresia"));
+        Date fechaCorte = null;
         try {
-            cliente = new Cliente(
+            if(rs.getString("fechaCorte") != null)
+                fechaCorte = dateFormatConfig.convertir(rs.getString("fechaCorte"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        cliente = new Cliente(
                 rs.getLong("id"),
                 rs.getString("nombre"),
                 rs.getString("apellidoPaterno"),
                 rs.getString("apellidoMaterno"),
                 rs.getString("correo"),
-                dateFormatConfig.convertir(rs.getString("fechaCorte")),
+                fechaCorte,
                 membresia);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         return cliente;
     }
     
