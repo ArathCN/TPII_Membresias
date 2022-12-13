@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Método de pago</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+<header>
+    <nav class="navbar navbar-light bg-light" style="border-radius: 20px;">
+        <form class="container-fluid justify-content-end">
+            <div style="padding-right: 10px;">
+                <button class="btn-out success">Iniciar Sesion</button>
+            </div>
+            <button class="btn default">Registrarse</button>
+        </form>
+      </nav>
+</header>
+<body>
+    <div class="container-resumen">
+        <div class="row">
+            <div class="col">
+                <h3 class="title">Resumen de pago</h3>
+                <div class="infoBox">
+                    <span><b>Precio de la membresía</b></span>
+                    <span class="cantidad"><b>$0.00</b></span><!-- Aqui va el precio de la membresía-->
+                </div>
+                <div class="infoBox">
+                    <span><b>Descuento de membresía*</b></span>
+                    <span class="cantidad"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
+                </div>
+                <hr class="linea">
+                <div class="infoBox">
+                    <span><b>Total a pagar</b></span>
+                    <span class="cantidad"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
+                </div>
+            </div>
+            <p>*Descuento por el paquete seleccionado en el paso anterior.</p>
+        </div>
+    </div>
+    <div class="container-metodo">
+        <form action="">
+            <div class="row">
+                <div class="col">
+                    <h3 class="title">Método de pago</h3>
+                    <hr class="linea">
+                    <div class="inputBox" id="tarjetasBox">
+                        <span><b>Tarjetas aceptadas</b></span>
+                        <img src="../static/img/tarjetass.png" alt="" height="32px">
+                    </div>
+                    <div class="inputBox" id="nombreBox">
+                        <span><b>Nombre en la tarjeta</b></span>
+                        <input type="text" placeholder="" id="nombre">
+                    </div>
+                    <div class="inputBox" id="noTarjetaBox">
+                        <span><b>Número de la tarjeta</b></span>
+                        <input type="email" placeholder="0000 0000 0000 0000" id="noTarjeta">
+                    </div>
+                    <div class="inputBox" id="fechacadBox">
+                        <span><b>Fecha de cad.</b></span>
+                        <input type="text" placeholder="DD/AA" id="fechacad">
+                    </div>
+                    <div class="inputBox" id="cvvBox">
+                        <span><b>CVV</b></span>
+                        <input type="text" placeholder="123" id="cvv">
+                    </div>
+             </div>
+            </div>
+            <input type="submit" value="Confirmar pago" class="submit-btn" id="confirmarbtn">
+        </form>
+    </div>    
+</body>
+</html>

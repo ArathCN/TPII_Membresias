@@ -1,0 +1,110 @@
+body{
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.contenedor-membresias{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  padding: 10px;
+}
+
+.contenedor-membresias-todo{
+  grid-column: 1/12;
+  grid-row: 1/9;
+  padding: 10px;
+  background-color: #e0ffe2;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.contenedor-membresias-elementos{
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  gap: 30px;
+  padding: 50px;
+}
+
+.Contenedor-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #7eac80;
+    border-radius: 20px;
+    height: 80px;
+}
+
+.contenedor-titulo{
+  grid-column: 8/14;
+  grid-row: 1/3;
+  padding: 10px;
+  background-color: #e0ffe2;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.contendor-mensual{
+  grid-column: 4/8;
+  grid-row: 2/6;
+  height: 450px;
+  padding: 15px;
+  background-color: #7eac80;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 10px 16px teal;
+}
+
+.contendor-anual{
+  grid-column: 9/13;
+  grid-row: 2/6;
+  height: 550px;
+  padding: 10px;
+  background-color: #7eac80;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 10px 16px rgb(0, 54, 116);
+}
+
+.contendor-semestral{
+  grid-column: 14/18;
+  grid-row: 2/6;
+  height: 450px;
+  padding: 10px;
+  background-color: #7eac80;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 10px 16px teal;
+}
+
+.btn-out {
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding: 6px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .success {
+    border-color: #7eac80;
+    color: #7eac80;
+  }
+  
+  .success:hover {
+    background-color: #7eac80;
+    color: white;
+  }
+
+  .btn {
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .default {background-color: #7eac80; color: white;}
+  .default:hover {background: #e0ffe2;}
