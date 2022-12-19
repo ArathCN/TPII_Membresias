@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Método de pago</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery-3.6.1.js}" src="../../static/js/jquery-3.6.1.js"></script>
+    <script th:src="@{/js/pago.js}" src="../../static/js/pago.js"></script>
 </head>
 <header>
     <nav class="navbar navbar-light bg-light" style="border-radius: 20px;">
@@ -35,14 +37,14 @@
                 <hr class="linea">
                 <div class="infoBox">
                     <span><b>Total a pagar</b></span>
-                    <span class="cantidad" th:text="${membresia.precio}"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
+                    <span class="cantidad" id="importeTotal" th:data-importe="${membresia.precio}" th:text="${membresia.precio}"><b>$0.00</b></span><!-- Aqui va el descuento de la membresía-->
                 </div>
             </div>
             <p>*Descuento por el paquete seleccionado en el paso anterior.</p>
         </div>
     </div>
     <div class="container-metodo">
-        <form th:action="@{/pago}" method="POST">
+        <form id="pagoForm" action="#" method="POST">
             <div class="row">
                 <div class="col">
                     <h3 class="title">Método de pago</h3>
@@ -51,41 +53,49 @@
                         <span><b>Tarjetas aceptadas</b></span>
                         <img src="../static/img/tarjetass.png" alt="" height="32px">
                     </div>
-                    <div class="inputBox" id="nombreBox">
-                        <span><b>Nombre en la tarjeta</b></span>
-                        <input type="text" placeholder="" id="nombre">
-                    </div>
+                    <input type="hidden" th:value="${cliente.id}" id="idCliente" name="idCliente">
+                    <input type="hidden" th:value="${membresia.id}" id="idMembresia" name="idMembresia">
                     <div class="inputBox" id="noTarjetaBox">
                         <span><b>Número de la tarjeta</b></span>
-                        <input type="text" placeholder="0000 0000 0000 0000" id="noTarjeta">
+                        <input type="text" placeholder="0000 0000 0000 0000" id="noTarjeta" name="numero">
                     </div>
                     <div class="inputBox" id="fechacadBox">
                         <span><b>Fecha de cad.</b></span>
-                        <input type="text" placeholder="DD/AA" id="fechacad">
+                        <input type="text" placeholder="DD/AA" id="fechacad" name="vencimiento">
                     </div>
                     <div class="inputBox" id="cvvBox">
                         <span><b>CVV</b></span>
-                        <input type="text" placeholder="123" id="cvv">
+                        <input type="text" placeholder="123" id="cvv" name="codigo">
                     </div>
              </div>
             </div>
             <input type="submit" value="Confirmar pago" class="submit-btn" id="confirmarbtn">
+            
         </form>
     </div>
-    <!-- PAGO ACEPTADO -->
-    <div id="modal_container" class="modal-container" style="display:none;">
+    <!-- PAGO PROCESANDO -->
+    <div id="modal_container_procesando" class="modal-container" style="display:none;">
         <div class="Ventana">
-        <img src="../static/img/aceptado.png" alt="" width="80px">
+        <!-- <img th:src="@{/img/aceptado.png}" alt="" width="80px"> -->
+        <h1 class="mensaje">Se está procesando el pago...</h1><br>
+        <!-- <button id="tiendabtn_aceptado">Ir a la tienda</button> -->
+        </div>
+    </div>
+    <!-- PAGO ACEPTADO -->
+    <div id="modal_container_aceptado" class="modal-container" style="display:none;">
+        <div class="Ventana">
+        <img th:src="@{/img/aceptado.png}" alt="" width="80px">
         <h1 class="mensaje">El pago fue exitoso</h1><br>
-        <button id="tiendabtn">Ir a la tienda</button>
+        <button id="tiendabtn_aceptado">Ir a la tienda</button>
         </div>
     </div>
     <!-- PAGO RECHAZADO -->
-    <div id="modal_container" class="modal-container" style="display:none;">
+    <div id="modal_container_rechazado" class="modal-container" style="display:none;">
         <div class="Ventana">
-        <img src="../static/img/rechazado.png" alt="" width="80px">
-        <h1 class="mensaje">El pago fue rechazado</h1><br>
-        <button id="tiendabtn">Volver a intentarlo</button>
+            <img th:src="@{/img/rechazado.png}" alt="" width="80px">
+            <h1 class="mensaje">El pago fue rechazado</h1>
+            <br>
+            <button id="tiendabtn_rechazado" class="tiendabtn_rechazado">Volver a intentarlo</button>
         </div>
     </div>
 </body>

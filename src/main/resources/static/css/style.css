@@ -185,7 +185,7 @@ button {
   align-items: center;
   justify-content: center;
   position: fixed;
-  pointer-events: none;
+  /* pointer-events: none; */
   opacity: 1;  
   top: 0;
   left: 0;

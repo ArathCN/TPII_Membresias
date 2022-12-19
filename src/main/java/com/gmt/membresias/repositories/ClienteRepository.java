@@ -28,15 +28,16 @@ public class ClienteRepository {
 
     public long create(Cliente cliente) throws ClienteRepositoryException{
         SimpleJdbcInsert simpleJdbcInsert = 
-            new SimpleJdbcInsert(dataSource).withTableName("cliente").usingGeneratedKeyColumns("id");
+            new SimpleJdbcInsert(dataSource).withTableName("cliente");
         Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("id", cliente.getId());
         parameters.put("nombre", cliente.getNombre());
         parameters.put("apellidoPaterno", cliente.getApellidoPaterno());
         parameters.put("apellidoMaterno", cliente.getApellidoMaterno());
         parameters.put("correo", cliente.getCorreo());
         Number id = null;
         try {
-            id = simpleJdbcInsert.executeAndReturnKey(parameters);
+            id = simpleJdbcInsert.execute(parameters);
         } catch (Exception e) {
             throw new ClienteRepositoryException(1, e.getMessage());
         }
